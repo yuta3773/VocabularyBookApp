@@ -3,4 +3,11 @@
     <string name="title_text">単語帳</string>
     <string name="study_button_text">学習</string>
     <string name="addition_button_text">追加</string>
+
+<!--  activity_study  -->
+    <string name="English_text">English</string>
+    <string name="Japanese_text">Japanese</string>
+    <string name="next_text">NEXT</string>
+
+
 </resources>
