@@ -8,6 +8,7 @@
     <string name="English_text">English</string>
     <string name="Japanese_text">Japanese</string>
     <string name="next_text">NEXT</string>
+    <string name="home_text">HOME</string>
 
     <!--  activity_addition  -->
     <string name="english_add_text">単語登録</string>

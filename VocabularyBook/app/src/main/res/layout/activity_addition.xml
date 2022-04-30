@@ -89,14 +89,14 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/study_Japanese_button"
+            android:id="@+id/add_home_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:text="@string/back_text" />
+            android:text="@string/home_text" />
 
         <Button
-            android:id="@+id/study_next_button"
+            android:id="@+id/add_next_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
