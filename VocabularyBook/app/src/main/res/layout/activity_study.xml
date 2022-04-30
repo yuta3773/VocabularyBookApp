@@ -37,15 +37,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/english_question_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:text="apple、apple、apple、apple、apple、apple、apple、apple、
-                          apple、apple、apple、apple、apple、apple、apple、apple、
-                          apple、apple、apple、apple、apple、apple、apple、apple、"/>
+            android:text=""/>
 
     </LinearLayout>
 
@@ -69,13 +68,14 @@
         app:layout_constraintTop_toTopOf="@+id/english_linear_layout">
 
         <TextView
+            android:id="@+id/japanese_question_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:text="りんご、りんご、りんご、りんご、りんご、りんご、"/>
+            android:text=""/>
 
     </LinearLayout>
 

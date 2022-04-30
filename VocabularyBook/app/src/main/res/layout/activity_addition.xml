@@ -38,13 +38,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
+            android:id="@+id/input_add_english_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:text="apple、"/>
+            android:text=""/>
 
     </LinearLayout>
 
@@ -68,13 +69,14 @@
         app:layout_constraintTop_toTopOf="@+id/add_English_linear_layout">
 
         <EditText
+            android:id="@+id/input_add_japanese_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:text="りんご、"/>
+            android:text=""/>
 
     </LinearLayout>
 
@@ -96,7 +98,7 @@
             android:text="@string/home_text" />
 
         <Button
-            android:id="@+id/add_next_button"
+            android:id="@+id/add_keep_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
