@@ -18,24 +18,31 @@ class AdditionActivity : AppCompatActivity() {
         binding = ActivityAdditionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-            //タップ時入力データ保存
-            binding.addKeepButton.setOnClickListener {
-                //データの入力条件分岐。Dialog表示
-                if (binding.inputAddEnglishText.text.toString() != "" && binding.inputAddJapaneseText.text.toString() != "") {
-                    vocabularyData = VocabularyData(english = binding.inputAddEnglishText.text.toString(),
-                        japanese = binding.inputAddJapaneseText.text.toString())
-                    vocabularyDataList = mutableListOf(vocabularyData)
-                    //保存処理の呼び出し
-                    onSaveTapped()
-                } else {
+        //タップ時入力データ保存
+        binding.addKeepButton.setOnClickListener {
+            //データの入力条件分岐。Dialog表示
+            if (binding.inputAddEnglishText.text.toString() != "" && binding.inputAddJapaneseText.text.toString() != "") {
+                vocabularyData = VocabularyData(english = binding.inputAddEnglishText.text.toString(),
+                    japanese = binding.inputAddJapaneseText.text.toString())
+                vocabularyDataList = mutableListOf(vocabularyData)
+                //保存処理の呼び出し
+                onSaveTapped()
+                //保存完了Dialog
                 AlertDialog.Builder(this)
-                    .setTitle("ERROR！")
-                    .setMessage("入力してください")
+                    .setTitle("保存完了")
                     .setPositiveButton("OK"){ dialog, which -> }
                     .show()
-                }
+                //入力した文字を空にする
+                binding.inputAddEnglishText.text = null
+                binding.inputAddJapaneseText.text = null
+            } else {
+            AlertDialog.Builder(this)
+                .setTitle("ERROR！")
+                .setMessage("入力してください")
+                .setPositiveButton("OK"){ dialog, which -> }
+                .show()
             }
+        }
 //        binding.addKeepButton.isEnabled = false
 
         //HOME画面に遷移
