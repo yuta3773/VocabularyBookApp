@@ -1,5 +1,6 @@
 package com.example.vocabularybook
 
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.preference.PreferenceManager
@@ -10,21 +11,32 @@ import com.google.gson.Gson
 class AdditionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAdditionBinding
     private lateinit var vocabularyData: VocabularyData
-    var vocabularyDataList: MutableList<VocabularyData> = mutableListOf()
+    private var vocabularyDataList: MutableList<VocabularyData> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAdditionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //タップ時入力データ保存
-        binding.addKeepButton.setOnClickListener {
-            vocabularyData = VocabularyData(english = binding.inputAddEnglishText.text.toString(),
-                                            japanese = binding.inputAddJapaneseText.text.toString())
-            vocabularyDataList = mutableListOf(vocabularyData)
-            //保存処理の呼び出し
-            onSaveTapped()
-        }
+
+            //タップ時入力データ保存
+            binding.addKeepButton.setOnClickListener {
+                //データの入力条件分岐。Dialog表示
+                if (binding.inputAddEnglishText.text.toString() != "" && binding.inputAddJapaneseText.text.toString() != "") {
+                    vocabularyData = VocabularyData(english = binding.inputAddEnglishText.text.toString(),
+                        japanese = binding.inputAddJapaneseText.text.toString())
+                    vocabularyDataList = mutableListOf(vocabularyData)
+                    //保存処理の呼び出し
+                    onSaveTapped()
+                } else {
+                AlertDialog.Builder(this)
+                    .setTitle("ERROR！")
+                    .setMessage("入力してください")
+                    .setPositiveButton("OK"){ dialog, which -> }
+                    .show()
+                }
+            }
+//        binding.addKeepButton.isEnabled = false
 
         //HOME画面に遷移
         binding.addHomeButton.setOnClickListener { finish() }
