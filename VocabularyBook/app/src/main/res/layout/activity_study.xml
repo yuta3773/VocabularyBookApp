@@ -90,15 +90,22 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/study_Japanese_button"
-            android:layout_width="150dp"
+            android:id="@+id/study_back_button"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
+            android:text="@string/back_text" />
+
+
+        <Button
+            android:id="@+id/study_Japanese_button"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
             android:text="@string/Japanese_text" />
 
         <Button
             android:id="@+id/study_next_button"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="@string/next_text" />

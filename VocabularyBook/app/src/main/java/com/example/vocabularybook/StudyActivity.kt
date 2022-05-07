@@ -29,6 +29,7 @@ class StudyActivity : AppCompatActivity() {
             //取り出した値の代入
             binding.englishQuestionText.text = studyList[number].english
         } else {
+            binding.studyBackButton.isEnabled = false
             binding.studyJapaneseButton.isEnabled = false
             binding.studyNextButton.isEnabled = false
             AlertDialog.Builder(this)
@@ -37,20 +38,39 @@ class StudyActivity : AppCompatActivity() {
                 .show()
         }
 
+        //前の単語
+        binding.studyBackButton.setOnClickListener {
+            if (number != 0) {
+                binding.studyNextButton.isEnabled = true
+                number -= 1
+                binding.englishQuestionText.text = studyList[number].english
+            } else {
+                binding.studyBackButton.isEnabled = false
+                AlertDialog.Builder(this)
+                    .setTitle("これ以上は戻れません")
+                    .setPositiveButton("OK"){ dialog, which -> }
+                    .show()
+            }
+        }
+
+        //次の単語
         binding.studyNextButton.setOnClickListener {
             if (studyList.size > number + 1) {
+                binding.studyBackButton.isEnabled = true
                 number += 1
                 binding.englishQuestionText.text = studyList[number].english
                 binding.japaneseQuestionText.text = null
             } else {
+                binding.studyBackButton.isEnabled = true
                 binding.studyNextButton.isEnabled = false
                 AlertDialog.Builder(this)
                     .setTitle("登録されている単語はありません\n単語を追加登録してください")
                     .setPositiveButton("OK"){ dialog, which -> }
                     .show()
             }
-
         }
+
+        //日本語表示
         binding.studyJapaneseButton.setOnClickListener {
             binding.japaneseQuestionText.text = studyList[number].japanese
         }
