@@ -1,5 +1,6 @@
 package com.example.vocabularybook
 
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.preference.PreferenceManager
@@ -8,6 +9,8 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 class StudyActivity : AppCompatActivity() {
+    private var number = 0
+    private lateinit var studyList: MutableList<VocabularyData>
     private lateinit var binding: ActivityStudyBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,11 +25,36 @@ class StudyActivity : AppCompatActivity() {
         if (extract != "") {
             //保存配列の取り出し
             val type = object : TypeToken<List<VocabularyData>>() {}.type
-            var studyList = Gson().fromJson<MutableList<VocabularyData>>(extract, type) as MutableList<VocabularyData>
+            studyList = Gson().fromJson<MutableList<VocabularyData>>(extract, type) as MutableList<VocabularyData>
             //取り出した値の代入
-            binding.englishQuestionText.text = studyList[0].english
-            binding.japaneseQuestionText.text = studyList[0].japanese
+            binding.englishQuestionText.text = studyList[number].english
+        } else {
+            binding.studyJapaneseButton.isEnabled = false
+            binding.studyNextButton.isEnabled = false
+            AlertDialog.Builder(this)
+                .setTitle("登録されている単語はありません\n単語を追加登録してください")
+                .setPositiveButton("OK"){ dialog, which -> }
+                .show()
         }
+
+        binding.studyNextButton.setOnClickListener {
+            if (studyList.size > number + 1) {
+                number += 1
+                binding.englishQuestionText.text = studyList[number].english
+                binding.japaneseQuestionText.text = null
+            } else {
+                binding.studyNextButton.isEnabled = false
+                AlertDialog.Builder(this)
+                    .setTitle("登録されている単語はありません\n単語を追加登録してください")
+                    .setPositiveButton("OK"){ dialog, which -> }
+                    .show()
+            }
+
+        }
+        binding.studyJapaneseButton.setOnClickListener {
+            binding.japaneseQuestionText.text = studyList[number].japanese
+        }
+
 
         //HOME画面に遷移
         binding.studyHomeButton.setOnClickListener { finish() }

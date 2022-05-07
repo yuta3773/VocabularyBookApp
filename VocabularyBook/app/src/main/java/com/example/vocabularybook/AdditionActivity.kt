@@ -24,7 +24,7 @@ class AdditionActivity : AppCompatActivity() {
             if (binding.inputAddEnglishText.text.toString() != "" && binding.inputAddJapaneseText.text.toString() != "") {
                 vocabularyData = VocabularyData(english = binding.inputAddEnglishText.text.toString(),
                     japanese = binding.inputAddJapaneseText.text.toString())
-                vocabularyDataList = mutableListOf(vocabularyData)
+                vocabularyDataList.add(vocabularyData)
                 //保存処理の呼び出し
                 onSaveTapped()
                 //保存完了Dialog
@@ -43,7 +43,6 @@ class AdditionActivity : AppCompatActivity() {
                 .show()
             }
         }
-//        binding.addKeepButton.isEnabled = false
 
         //HOME画面に遷移
         binding.addHomeButton.setOnClickListener { finish() }
