@@ -44,7 +44,9 @@ class StudyActivity : AppCompatActivity() {
                 binding.studyNextButton.isEnabled = true
                 number -= 1
                 binding.englishQuestionText.text = studyList[number].english
+                binding.japaneseQuestionText.text = null
             } else {
+                binding.studyNextButton.isEnabled = true
                 binding.studyBackButton.isEnabled = false
                 AlertDialog.Builder(this)
                     .setTitle("これ以上は戻れません")
@@ -74,7 +76,6 @@ class StudyActivity : AppCompatActivity() {
         binding.studyJapaneseButton.setOnClickListener {
             binding.japaneseQuestionText.text = studyList[number].japanese
         }
-
 
         //HOME画面に遷移
         binding.studyHomeButton.setOnClickListener { finish() }
