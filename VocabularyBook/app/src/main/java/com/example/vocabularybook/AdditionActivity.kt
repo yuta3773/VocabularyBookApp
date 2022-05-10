@@ -7,6 +7,7 @@ import androidx.preference.PreferenceManager
 import androidx.core.content.edit
 import com.example.vocabularybook.databinding.ActivityAdditionBinding
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class AdditionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAdditionBinding
@@ -17,6 +18,20 @@ class AdditionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAdditionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        //取得したデータを代入
+        val extract = pref.getString("INPUT_DATA", "")
+        //保存データの条件分岐
+        if (extract != "") {
+            //保存配列の取り出し
+            val type = object : TypeToken<List<VocabularyData>>() {}.type
+            var addList = Gson().fromJson<MutableList<VocabularyData>>(extract, type) as MutableList<VocabularyData>
+            //保存されている単語を取り出す
+            for (keepList in addList) {
+                vocabularyDataList.add(keepList)
+            }
+        }
 
         //タップ時入力データ保存
         binding.addKeepButton.setOnClickListener {
