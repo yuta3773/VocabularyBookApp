@@ -13,3 +13,12 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+#除外
+.gitignore
+.moduls.xml
+.vcs.xml
+.VocabularyBook
+.deploymentTargetDropDown.xml
+.gradlle.xml
+.misc.xml
